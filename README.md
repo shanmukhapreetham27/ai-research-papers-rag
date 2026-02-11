@@ -95,19 +95,26 @@ If port `8501` is busy:
 streamlit run app.py --server.port 8502
 ```
 
-## How to Demo in Interview
+## How to Run (End-to-End)
 
-1. Ask one paper-specific question.
-2. Show generated answer with citations.
-3. Open one top source via arXiv/local PDF.
-4. Explain chunking (`CHUNK_SIZE`, `CHUNK_OVERLAP`) and retrieval depth (`RETRIEVE_K`).
+1. Create and activate environment.
+2. Install dependencies.
+3. Add OpenRouter key in `.env`.
+4. Download papers.
+5. Build index.
+6. Start Streamlit.
 
-## Reproducibility Notes
+```powershell
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
+pip install -r requirements.txt
+Copy-Item .env.example .env
+# set OPENROUTER_API_KEY in .env
+python -m src.download_arxiv --max-results 120
+python -m src.ingest --reset
+streamlit run app.py --server.port 8502
+```
 
-- `data/papers/` and `data/index/` are intentionally not committed due size/cost.
-- Any evaluator can regenerate them with the commands above.
-- `.env` is excluded from git; use `.env.example` template.
-
-## Resume Bullet (Example)
-
-Built a Retrieval-Augmented Generation assistant over 120 AI research papers using Python, Streamlit, and OpenRouter embeddings/LLM APIs, with local indexing, source-grounded answers, and paper-level citation links for transparent retrieval.
+Notes:
+- `data/papers/` and `data/index/` are generated locally and intentionally not committed.
+- `.env` is excluded from git; use `.env.example`.
