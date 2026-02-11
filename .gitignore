@@ -1,0 +1,19 @@
+# Byte-compiled / cache
+__pycache__/
+*.py[cod]
+*.log
+
+# Environments
+.venv/
+venv/
+
+# Secrets
+.env
+
+# Vector index and datasets (large/local artifacts)
+/data/index/
+/data/papers/
+
+# OS files
+.DS_Store
+Thumbs.db
