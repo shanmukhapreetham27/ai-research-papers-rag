@@ -71,6 +71,13 @@ Download papers:
 python -m src.download_arxiv --max-results 120
 ```
 
+Use bundled tiny sample dataset (fastest way to test from GitHub):
+
+```powershell
+python -m src.use_sample_dataset --clean
+python -m src.ingest --reset --max-papers 3
+```
+
 Build index:
 
 ```powershell
@@ -118,3 +125,4 @@ streamlit run app.py --server.port 8502
 Notes:
 - `data/papers/` and `data/index/` are generated locally and intentionally not committed.
 - `.env` is excluded from git; use `.env.example`.
+- Tiny sample files are included in `data/sample_papers/` for quick evaluation.
